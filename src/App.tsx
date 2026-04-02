@@ -1,11 +1,73 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Mail, ShoppingBag, PlaySquare, Camera, Briefcase, Palette, Music } from 'lucide-react'
+import { ArrowDown, Mail, ShoppingBag, PlaySquare, Camera, Briefcase, Palette, Music, ArrowUpRight } from 'lucide-react'
+
+// Placeholder images for carousels (representing 3D renders, videos, photos)
+const artStationImages = [
+  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1633446059635-4dbb2fc13fbb?q=80&w=600&auto=format&fit=crop"
+];
+
+const youtubeImages = [
+  "https://i.ytimg.com/vi/Ftrx3Z_oyLE/maxresdefault.jpg",
+  "https://i.ytimg.com/vi/_ptV8v1QrqA/maxresdefault.jpg"
+];
+
+const instagramImages = [
+  "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=400&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=400&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop"
+];
+
+const gumroadImages = [
+  "https://public-files.gumroad.com/sklzzv36iop6210jnof92z4rv3zi",
+  "https://public-files.gumroad.com/9t0140n94d06szub10ofo6mmgwn5",
+  "https://public-files.gumroad.com/892w4gaybi4oe79suyf2zodihuvw",
+  "https://public-files.gumroad.com/ib2wz4h2titk4ikbieowgkwcyial",
+  "https://public-files.gumroad.com/d70wqjl4blh1gfooug534lvcn55a"
+];
 
 const tools = [
   "Blender", "Maya", "Cinema 4D", "ZBrush", "Unreal Engine",
   "Substance Painter", "Marvelous Designer", "After Effects", "Nuke", "Premiere Pro",
   "Blender", "Maya", "Cinema 4D", "ZBrush", "Unreal Engine"
 ];
+
+// Reusable Carousel Component for Bento Grid backgrounds
+const Carousel = ({ 
+  images, 
+  direction = "horizontal", 
+  reverse = false, 
+  speed = 30, 
+  className = "", 
+  imageClassName = "" 
+}: { 
+  images: string[], 
+  direction?: "horizontal"|"vertical", 
+  reverse?: boolean, 
+  speed?: number, 
+  className?: string, 
+  imageClassName?: string 
+}) => {
+  const isHorizontal = direction === "horizontal";
+  const animateFrames = reverse ? ["-50%", "0%"] : ["0%", "-50%"];
+  const animateProp = isHorizontal ? { x: animateFrames } : { y: animateFrames };
+
+  return (
+    <div className={`absolute inset-0 overflow-hidden pointer-events-none opacity-30 group-hover:opacity-60 transition-opacity duration-700 ${className}`}>
+      <motion.div
+        className={`flex ${isHorizontal ? 'w-max flex-row' : 'h-max flex-col'} gap-4 p-4`}
+        animate={animateProp}
+        transition={{ ease: "linear", duration: speed, repeat: Infinity }}
+      >
+        {[...images, ...images].map((src, i) => (
+          <img key={i} src={src} className={`object-cover rounded-2xl ${imageClassName}`} alt="" />
+        ))}
+      </motion.div>
+    </div>
+  );
+};
 
 function App() {
   return (
@@ -142,148 +204,199 @@ function App() {
       </section>
       
       {/* Portfolio Hub - Bento Grid */}
-      <section id="portfolio" className="py-24 px-6 bg-slate-900 relative z-20">
-        <div className="max-w-5xl mx-auto">
-          <motion.h2 
+      <section id="portfolio" className="py-32 px-6 bg-slate-950 relative z-20 overflow-hidden">
+        {/* Background ambient light */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+            className="flex flex-col items-center mb-16"
           >
-            Мои сети & Портфолио
-          </motion.h2>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-center">
+              ПОСМОТРЕТЬ РАБОТЫ
+            </h2>
+            <div className="w-16 h-1 bg-indigo-500 rounded-full" />
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 auto-rows-[200px]">
-            {/* Artstation */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[240px]">
+            {/* Artstation (Large 2x2) */}
             <motion.a
               href="https://www.artstation.com/yespeace"
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group relative col-span-1 md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden bg-gradient-to-br from-blue-600 to-cyan-800 p-8 flex flex-col justify-end shadow-xl border border-white/10"
+              className="group relative col-span-1 md:col-span-2 md:row-span-2 rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 hover:border-white/20 transition-all duration-500"
             >
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-              <div className="absolute top-6 right-6 p-3 bg-white/10 backdrop-blur-md rounded-full">
-                <Palette size={24} className="text-white" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-600/20 via-slate-900 to-slate-950 transition-transform duration-700 group-hover:scale-105" />
+              
+              {/* Carousel Layer */}
+              <Carousel images={artStationImages} speed={40} className="-rotate-6 scale-125" imageClassName="w-64 h-64 shadow-2xl opacity-80" />
+
+              {/* Gradient Overlay for Text Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
+              
+              <div className="absolute top-8 right-8 w-12 h-12 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-colors z-10">
+                <ArrowUpRight size={24} className="text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </div>
-              <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-white mb-2">ArtStation</h3>
-                <p className="text-blue-100 font-medium">Главное портфолио проектов и 3D моделей</p>
+              
+              <div className="relative h-full p-8 flex flex-col justify-end z-10">
+                <div className="w-14 h-14 mb-6 bg-blue-500/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-blue-500/30">
+                  <Palette size={28} className="text-blue-400" />
+                </div>
+                <h3 className="text-4xl font-black text-white mb-2 tracking-tight uppercase">ArtStation</h3>
+                <p className="text-slate-300 text-lg max-w-sm font-medium">Главное портфолио. Моделирование, рендеры и ключевые проекты.</p>
               </div>
             </motion.a>
 
-            {/* YouTube */}
+            {/* YouTube (Wide 2x1) */}
             <motion.a
               href="https://youtube.com/@yespeace"
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-              className="group relative col-span-1 md:col-span-2 md:row-span-1 rounded-3xl overflow-hidden bg-gradient-to-br from-red-600 to-red-900 p-6 flex flex-col justify-end shadow-xl border border-white/10"
+              transition={{ delay: 0.1 }}
+              className="group relative col-span-1 md:col-span-2 md:row-span-1 rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 hover:border-white/20 transition-all duration-500"
             >
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-              <div className="absolute top-6 right-6 p-3 bg-white/10 backdrop-blur-md rounded-full">
-                <PlaySquare size={24} className="text-white" />
+              <div className="absolute inset-0 bg-red-950/40 transition-transform duration-700 group-hover:scale-105" />
+              
+              {/* Carousel Layer */}
+              <Carousel images={youtubeImages} speed={30} className="-rotate-2 scale-110" imageClassName="w-80 h-44 shadow-2xl opacity-80" />
+
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent" />
+
+              <div className="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-colors z-10">
+                <ArrowUpRight size={20} className="text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </div>
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-white mb-1">YouTube</h3>
-                <p className="text-red-100 text-sm font-medium">Шоурилы, брейкдауны и анимации</p>
+
+              <div className="relative h-full p-8 flex items-center gap-6 z-10">
+                <div className="w-16 h-16 shrink-0 bg-red-500/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-red-500/30 shadow-lg">
+                  <PlaySquare size={32} className="text-red-400" />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-black text-white mb-1 tracking-tight uppercase">YouTube</h3>
+                  <p className="text-slate-300 font-medium">Шоурилы и брейкдауны</p>
+                </div>
               </div>
             </motion.a>
 
-            {/* TikTok */}
-            <motion.a
-              href="https://www.tiktok.com/@yespeaceyes?_r=1&_t=ZS-95BNwXyqImi"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-              className="group relative col-span-1 md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden bg-gradient-to-br from-gray-800 to-black p-6 flex flex-col justify-end shadow-xl border border-white/10"
-            >
-              <div className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors" />
-              <div className="absolute top-6 right-6 p-3 bg-white/10 backdrop-blur-md rounded-full">
-                <Music size={24} className="text-white" />
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-white mb-1">TikTok</h3>
-                <p className="text-gray-400 text-sm">Короткие форматы</p>
-              </div>
-            </motion.a>
-
-            {/* Gumroad */}
-            <motion.a
-              href="https://yespeace.gumroad.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="group relative col-span-1 md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden bg-[#FF90E8] p-6 flex flex-col justify-end shadow-xl border border-white/10"
-            >
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
-              <div className="absolute top-6 right-6 p-3 bg-black/10 backdrop-blur-md rounded-full">
-                <ShoppingBag size={24} className="text-black" />
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-black mb-1">Gumroad</h3>
-                <p className="text-black/70 text-sm font-medium">Ассеты и материалы</p>
-              </div>
-            </motion.a>
-
-            {/* Instagram */}
+            {/* Instagram (Tall 1x2) */}
             <motion.a
               href="https://www.instagram.com/yespeaceful"
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="group relative col-span-1 md:col-span-2 md:row-span-1 rounded-3xl overflow-hidden bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 p-6 flex flex-col justify-end shadow-xl border border-white/10"
+              transition={{ delay: 0.2 }}
+              className="group relative col-span-1 md:col-span-1 md:row-span-2 rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 hover:border-white/20 transition-all duration-500"
             >
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-              <div className="absolute top-6 right-6 p-3 bg-white/10 backdrop-blur-md rounded-full">
-                <Camera size={24} className="text-white" />
+              <div className="absolute inset-0 bg-fuchsia-950/40 transition-transform duration-700 group-hover:scale-105" />
+              
+              {/* Carousel Layer */}
+              <Carousel images={instagramImages} direction="vertical" speed={25} className="scale-105" imageClassName="w-full h-56 shadow-xl opacity-80" />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+              
+              <div className="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-colors z-10">
+                <ArrowUpRight size={20} className="text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </div>
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-white mb-1">Instagram</h3>
-                <p className="text-white/80 text-sm font-medium">Лайфстайл и рабочие процессы</p>
+
+              <div className="relative h-full p-8 flex flex-col justify-between z-10">
+                <div className="w-14 h-14 bg-pink-500/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-pink-500/30">
+                  <Camera size={28} className="text-pink-400" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black text-white mb-2 tracking-tight uppercase">Instagram</h3>
+                  <p className="text-slate-300 text-sm font-medium">Лайфстайл и процессы создания</p>
+                </div>
               </div>
             </motion.a>
 
-            {/* LinkedIn */}
+            {/* LinkedIn (1x1) */}
             <motion.a
               href="https://www.linkedin.com/in/damir-kairbekov"
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="group relative col-span-1 md:col-span-2 md:row-span-1 rounded-3xl overflow-hidden bg-[#0A66C2] p-6 flex flex-col justify-end shadow-xl border border-white/10"
+              transition={{ delay: 0.3 }}
+              className="group relative col-span-1 md:col-span-1 md:row-span-1 rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col justify-between p-6"
             >
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
-              <div className="absolute top-6 right-6 p-3 bg-white/10 backdrop-blur-md rounded-full">
-                <Briefcase size={24} className="text-white" />
+              <div className="absolute inset-0 bg-blue-600/10 transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+              <div className="relative flex justify-between items-start">
+                <div className="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center border border-blue-500/30">
+                  <Briefcase size={24} className="text-blue-400" />
+                </div>
+                <ArrowUpRight size={20} className="text-slate-500 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
               </div>
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-white mb-1">LinkedIn</h3>
-                <p className="text-blue-100 text-sm font-medium">Профессиональный нетворкинг и резюме</p>
+              <div className="relative">
+                <h3 className="text-xl font-bold text-white mb-1 uppercase tracking-tight">LinkedIn</h3>
+                <p className="text-slate-400 text-sm">Резюме & Нетворкинг</p>
               </div>
             </motion.a>
+
+            {/* Gumroad (Wide 2x1) */}
+            <motion.a
+              href="https://yespeace.gumroad.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="group relative col-span-1 md:col-span-2 md:row-span-1 rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 hover:border-white/20 transition-all duration-500 flex items-center p-8 gap-6"
+            >
+              <div className="absolute inset-0 bg-[#FF90E8]/10" />
+
+              {/* Carousel Layer */}
+              <Carousel images={gumroadImages} reverse speed={40} className="rotate-2 scale-110 opacity-10 group-hover:opacity-30" imageClassName="w-56 h-40 shadow-xl" />
+
+              <div className="absolute inset-0 bg-gradient-to-l from-slate-950 via-slate-900/90 to-transparent" />
+
+              <div className="absolute top-6 right-6 z-10">
+                <ArrowUpRight size={20} className="text-slate-500 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+              </div>
+              <div className="relative w-16 h-16 shrink-0 bg-[#FF90E8]/20 rounded-2xl flex items-center justify-center border border-[#FF90E8]/30 z-10">
+                <ShoppingBag size={32} className="text-[#FF90E8]" />
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-3xl font-black text-white mb-1 uppercase tracking-tight">Gumroad</h3>
+                <p className="text-slate-300 font-medium">Мои 3D ассеты и материалы</p>
+              </div>
+            </motion.a>
+
+            {/* TikTok (1x1) */}
+            <motion.a
+              href="https://www.tiktok.com/@yespeaceyes?_r=1&_t=ZS-95BNwXyqImi"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="group relative col-span-1 md:col-span-1 md:row-span-1 rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col justify-between p-6"
+            >
+              <div className="absolute inset-0 bg-cyan-500/10 transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+              <div className="relative flex justify-between items-start">
+                <div className="w-12 h-12 bg-cyan-500/20 rounded-2xl flex items-center justify-center border border-cyan-500/30">
+                  <Music size={24} className="text-cyan-400" />
+                </div>
+                <ArrowUpRight size={20} className="text-slate-500 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+              </div>
+              <div className="relative">
+                <h3 className="text-xl font-bold text-white mb-1 uppercase tracking-tight">TikTok</h3>
+                <p className="text-slate-400 text-sm">Короткие видео</p>
+              </div>
+            </motion.a>
+
           </div>
         </div>
       </section>
