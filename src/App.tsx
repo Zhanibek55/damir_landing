@@ -15,9 +15,10 @@ const youtubeImages = [
 ];
 
 const instagramImages = [
-  "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=400&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=400&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop"
+  "/instagram/1.png",
+  "/instagram/2.png",
+  "/instagram/3.png",
+  "/instagram/4.png"
 ];
 
 const gumroadImages = [
