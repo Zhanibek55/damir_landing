@@ -153,7 +153,7 @@ function App() {
       <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-[40vh] md:mt-16">
         <motion.h1 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 0.85, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 drop-shadow-lg"
           >
@@ -161,22 +161,22 @@ function App() {
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 0.85, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl text-slate-200 font-light mb-10 max-w-2xl drop-shadow-md"
+            className="text-xl md:text-2xl text-slate-200/90 font-light mb-10 max-w-2xl drop-shadow-md"
           >
             3D Animation Artist crafting immersive visual experiences.
           </motion.p>
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 0.9, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
             <a 
               href="#portfolio" 
-              className="flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-indigo-500/25"
+              className="flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600/80 hover:bg-indigo-600/100 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-indigo-500/25"
             >
               View Work
               <ArrowDown size={18} />
@@ -185,7 +185,7 @@ function App() {
               href="https://www.linkedin.com/in/damir-kairbekov" 
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold transition-all shadow-lg"
+              className="flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/15 backdrop-blur-md border border-white/10 text-white/90 rounded-full font-semibold transition-all shadow-lg"
             >
               <LinkedinIcon size={18} />
               Get in Touch
