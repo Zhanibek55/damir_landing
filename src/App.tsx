@@ -150,7 +150,7 @@ function App() {
         </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-32 md:mt-16">
+      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-[40vh] md:mt-16">
         <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
