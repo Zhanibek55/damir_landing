@@ -28,6 +28,14 @@ const linkedinImages = [
   "/linkedin/4.png"
 ];
 
+const tiktokImages = [
+  "/tiktok/1.png",
+  "/tiktok/2.png",
+  "/tiktok/3.png",
+  "/tiktok/4.png",
+  "/tiktok/5.png"
+];
+
 const gumroadImages = [
   "https://public-files.gumroad.com/sklzzv36iop6210jnof92z4rv3zi",
   "https://public-files.gumroad.com/9t0140n94d06szub10ofo6mmgwn5",
@@ -401,15 +409,23 @@ function App() {
               className="group relative col-span-1 md:col-span-1 md:row-span-1 rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col justify-between p-6"
             >
               <div className="absolute inset-0 bg-cyan-500/10 transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
-              <div className="relative flex justify-between items-start">
-                <div className="w-12 h-12 bg-cyan-500/20 rounded-2xl flex items-center justify-center border border-cyan-500/30">
+              
+              {/* Carousel Layer */}
+              <Carousel images={tiktokImages} direction="vertical" speed={30} className="scale-105" imageClassName="w-full h-48 shadow-xl opacity-80" />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+              
+              <div className="relative flex justify-between items-start z-10">
+                <div className="w-12 h-12 bg-cyan-500/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-cyan-500/30">
                   <Music size={24} className="text-cyan-400" />
                 </div>
-                <ArrowUpRight size={20} className="text-slate-500 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                <div className="w-10 h-10 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-colors">
+                  <ArrowUpRight size={20} className="text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </div>
               </div>
-              <div className="relative">
+              <div className="relative z-10">
                 <h3 className="text-xl font-bold text-white mb-1 uppercase tracking-tight">TikTok</h3>
-                <p className="text-slate-400 text-sm">Short clips</p>
+                <p className="text-slate-300 font-medium text-sm">Short clips</p>
               </div>
             </motion.a>
 
