@@ -129,24 +129,29 @@ function App() {
 
       {/* Hero Section */}
       <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Background Video */}
-        <div className="absolute inset-0 z-0">
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            className="object-cover w-full h-full opacity-60"
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          ref={(videoEl) => {
+            if (videoEl) {
+              videoEl.playbackRate = 1.4;
+            }
+          }}
+          className="object-cover w-full h-full opacity-60"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-16">
-          <motion.h1 
+      {/* Hero Content */}
+      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-32 md:mt-16">
+        <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
