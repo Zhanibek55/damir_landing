@@ -1,5 +1,25 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Mail, ShoppingBag, PlaySquare, Camera, Briefcase, Palette, Music, ArrowUpRight, Linkedin } from 'lucide-react'
+import { ArrowDown, Mail, ShoppingBag, PlaySquare, Camera, Briefcase, Palette, Music, ArrowUpRight } from 'lucide-react'
+
+// Simple SVG for LinkedIn since Lucide removed brand icons
+const LinkedinIcon = ({ size = 24, className = "" }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+  </svg>
+);
 
 // Placeholder images for carousels (representing 3D renders, videos, photos)
 const artStationImages = [
@@ -162,7 +182,7 @@ function App() {
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold transition-all shadow-lg"
             >
-              <Linkedin size={18} />
+              <LinkedinIcon size={18} />
               Get in Touch
             </a>
           </motion.div>
