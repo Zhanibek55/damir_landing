@@ -174,13 +174,23 @@ function App() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
-            <a 
+            <motion.a 
               href="#portfolio" 
-              className="flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600/80 hover:bg-indigo-600/100 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-indigo-500/25"
+              className="relative overflow-hidden flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600/80 hover:bg-indigo-600/100 text-white rounded-full font-semibold transition-all shadow-[0_0_15px_rgba(79,70,229,0.4)]"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(79,70,229,0.7)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              View Work
-              <ArrowDown size={18} />
-            </a>
+              {/* Glare/Shimmer effect */}
+              <motion.div 
+                className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                animate={{ x: ["-200%", "300%"] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }}
+              />
+              <span className="relative z-10 flex items-center gap-2">
+                View Work
+                <ArrowDown size={18} />
+              </span>
+            </motion.a>
             <a 
               href="https://www.linkedin.com/in/damir-kairbekov" 
               target="_blank"
