@@ -137,7 +137,7 @@ function App() {
               href="#portfolio" 
               className="flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-indigo-500/25"
             >
-              Смотреть работы
+              View Work
               <ArrowDown size={18} />
             </a>
             <a 
@@ -147,7 +147,7 @@ function App() {
               className="flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold transition-all shadow-lg"
             >
               <Mail size={18} />
-              Связаться
+              Get in Touch
             </a>
           </motion.div>
         </div>
@@ -162,7 +162,7 @@ function App() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-6"
           >
-            Обо мне
+            About Me
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -171,9 +171,9 @@ function App() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-400 leading-relaxed"
           >
-            Я — 3D-аниматор, специализирующийся на создании динамичных и визуально 
-            привлекательных сцен. Открыт к сотрудничеству с крутыми проектами и командами. 
-            Постоянно совершенствую свои навыки и ищу новые вызовы в индустрии.
+            I am a 3D animator specializing in creating dynamic and visually appealing scenes. 
+            I am open to collaborating on exciting projects and working with great teams. 
+            I constantly improve my skills and look for new challenges in the industry.
           </motion.p>
         </div>
 
@@ -215,8 +215,8 @@ function App() {
             viewport={{ once: true }}
             className="flex flex-col items-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-center">
-              ПОСМОТРЕТЬ РАБОТЫ
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-center uppercase">
+              View Work
             </h2>
             <div className="w-16 h-1 bg-indigo-500 rounded-full" />
           </motion.div>
@@ -249,7 +249,7 @@ function App() {
                   <Palette size={28} className="text-blue-400" />
                 </div>
                 <h3 className="text-4xl font-black text-white mb-2 tracking-tight uppercase">ArtStation</h3>
-                <p className="text-slate-300 text-lg max-w-sm font-medium">Главное портфолио. Моделирование, рендеры и ключевые проекты.</p>
+                <p className="text-slate-300 text-lg max-w-sm font-medium">Main portfolio. Modeling, renders, and key projects.</p>
               </div>
             </motion.a>
 
@@ -281,7 +281,7 @@ function App() {
                 </div>
                 <div>
                   <h3 className="text-3xl font-black text-white mb-1 tracking-tight uppercase">YouTube</h3>
-                  <p className="text-slate-300 font-medium">Шоурилы и брейкдауны</p>
+                  <p className="text-slate-300 font-medium">Showreels and breakdowns</p>
                 </div>
               </div>
             </motion.a>
@@ -314,7 +314,7 @@ function App() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-black text-white mb-2 tracking-tight uppercase">Instagram</h3>
-                  <p className="text-slate-300 text-sm font-medium">Лайфстайл и процессы создания</p>
+                  <p className="text-slate-300 text-sm font-medium">Lifestyle and behind the scenes</p>
                 </div>
               </div>
             </motion.a>
@@ -339,7 +339,7 @@ function App() {
               </div>
               <div className="relative">
                 <h3 className="text-xl font-bold text-white mb-1 uppercase tracking-tight">LinkedIn</h3>
-                <p className="text-slate-400 text-sm">Резюме & Нетворкинг</p>
+                <p className="text-slate-400 text-sm">Resume & Networking</p>
               </div>
             </motion.a>
 
@@ -369,7 +369,7 @@ function App() {
               </div>
               <div className="relative z-10">
                 <h3 className="text-3xl font-black text-white mb-1 uppercase tracking-tight">Gumroad</h3>
-                <p className="text-slate-300 font-medium">Мои 3D ассеты и материалы</p>
+                <p className="text-slate-300 font-medium">My 3D assets and materials</p>
               </div>
             </motion.a>
 
@@ -393,7 +393,7 @@ function App() {
               </div>
               <div className="relative">
                 <h3 className="text-xl font-bold text-white mb-1 uppercase tracking-tight">TikTok</h3>
-                <p className="text-slate-400 text-sm">Короткие видео</p>
+                <p className="text-slate-400 text-sm">Short clips</p>
               </div>
             </motion.a>
 
@@ -410,7 +410,7 @@ function App() {
             viewport={{ once: true }}
             className="text-2xl md:text-3xl font-bold mb-6 text-slate-100"
           >
-            Готов обсудить ваш проект?
+            Ready to discuss your project?
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -419,7 +419,7 @@ function App() {
             transition={{ delay: 0.1 }}
             className="text-slate-400 mb-8"
           >
-            Открыт к новым предложениям, коллаборациям и сложным задачам.
+            Open to new opportunities, collaborations, and complex challenges.
           </motion.p>
           <motion.a 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -431,7 +431,7 @@ function App() {
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-900 rounded-full font-bold transition-all shadow-xl hover:shadow-white/20 mb-12"
           >
             <Mail size={18} />
-            Написать мне
+            Email Me
           </motion.a>
           
           <div className="w-full flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-slate-500 text-sm">
