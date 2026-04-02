@@ -3,10 +3,10 @@ import { ArrowDown, Mail, ShoppingBag, PlaySquare, Camera, Briefcase, Palette, M
 
 // Placeholder images for carousels (representing 3D renders, videos, photos)
 const artStationImages = [
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1633446059635-4dbb2fc13fbb?q=80&w=600&auto=format&fit=crop"
+  "/artstation/damir-kairbekov-axzurdgdd-c.jpg",
+  "/artstation/damir-kairbekov-dddddd.jpg",
+  "/artstation/damir-kairbekov-finalrender-i-think.webp",
+  "/artstation/damir-kairbekov-finalrender-i-think (1).webp"
 ];
 
 const youtubeImages = [
